@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.contrib import admin
-from django.urls import path
-from django.urls import include
-from rango import views
 
     
 def index(request):
-    return HttpResponse("Rango says hey there partner!")
+    context_dict = {'boldmessage': 'Crunchy, creamy, cookie, candy, cupcake!'}
+    return render(request, 'rango/index.html', context=context_dict)
 
+
+def about(request):
+    context_dict = {'boldmessage': 'This tutorial has been put together by Zed.'}
+    return render(request, 'rango/about.html',context=context_dict)
