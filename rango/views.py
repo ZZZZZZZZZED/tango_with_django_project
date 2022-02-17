@@ -11,28 +11,30 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 
-
-
 def index(request):
-    category_list = Category.objects.order_by('-likes')[:5]
-    page_list = Page.objects.order_by('-views')[:5]
-    visitor_cookie_handler(request)
-    context_dict = {}
-    context_dict['boldmessage'] = 'Crunchy, creamy, cookie, candy, cupcake!'
-    context_dict['categories'] = category_list
-    context_dict['pages'] = page_list
-    
-    
-    response = render(request, 'rango/index.html', context=context_dict) 
-    return response
-
+    return HttpResponse("<a href='/rango/about/'>About</a>Rango says hey there partner!")
 
 def about(request):
-    context_dict = {}
-    visitor_cookie_handler(request)
-    context_dict['visits'] = request.session['visits']
-    context_dict['boldmessage'] = 'This tutorial has been put together by Zed.'
-    return render(request, 'rango/about.html',context=context_dict)
+    return HttpResponse("<a href='/rango/'>Index</a>Rango says here is the about page.")
+
+# def index(request):
+#     category_list = Category.objects.order_by('-likes')[:5]
+#     page_list = Page.objects.order_by('-views')[:5]
+#     visitor_cookie_handler(request)
+#     context_dict = {}
+#     context_dict['boldmessage'] = 'Crunchy, creamy, cookie, candy, cupcake!'
+#     context_dict['categories'] = category_list
+#     context_dict['pages'] = page_list
+#     response = render(request, 'rango/index.html', context=context_dict) 
+#     return response
+
+
+# def about(request):
+#     context_dict = {}
+#     visitor_cookie_handler(request)
+#     context_dict['visits'] = request.session['visits']
+#     context_dict['boldmessage'] = 'This tutorial has been put together by Zed.'
+#     return render(request, 'rango/about.html',context=context_dict)
 
 def show_category(request, category_name_slug):
     context_dict = {}
